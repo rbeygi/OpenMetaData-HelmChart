@@ -1,1084 +1,1771 @@
 {
-    "$schema": "http://json-schema.org/schema#",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
     "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "omd",
+        "mysql",
+        "elasticsearch",
+        "airflow"
+    ],
     "properties": {
-        "messages": {
+        "omd": {
             "type": "object",
-            "errorMessage": "Global keyword has been replaced by openmetadata.config"
-        },
-        "affinity": {
-            "type": "object"
-        },
-        "extraEnvs": {
-            "type": "array"
-        },
-        "envFrom": {
-            "type": "array"
-        },
-        "extraInitContainers": {
-            "type": "array"
-        },
-        "extraVolumeMounts": {
-            "type": "array"
-        },
-        "extraVolumes": {
-            "type": "array"
-        },
-        "fullnameOverride": {
-            "type": "string"
-        },
-        "openmetadata": {
-            "type": "object",
-            "additionalProperties": false,
+            "default": {},
+            "title": "The omd Schema",
+            "required": [
+                "database",
+                "image",
+                "repository",
+                "tag",
+                "pullPolicy"
+            ],
             "properties": {
-                "config": {
+                "database": {
                     "type": "object",
-                    "additionalProperties": false,
-                    "messages": {
-                        "type": "object",
-                        "errorMessage": "Global keyword has been replaced by openmetadata.config"
-                    },
+                    "default": {},
+                    "title": "The database Schema",
+                    "required": [
+                        "host",
+                        "port",
+                        "driverClass",
+                        "dbScheme",
+                        "dbUseSSL",
+                        "databaseName",
+                        "auth"
+                    ],
                     "properties": {
-                        "web": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "uriPath": {
-                                    "type": "string"
-                                },
-                                "hsts": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "maxAge": {
-                                            "type": "string"
-                                        },
-                                        "includeSubDomains": {
-                                            "type": "string",
-                                            "format": "boolean"
-                                        },
-                                        "preload": {
-                                            "type": "string",
-                                            "format": "boolean"
-                                        }
-                                    }
-                                },
-                                "frameOptions": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "option": {
-                                            "type": "string"
-                                        },
-                                        "origin": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "contentTypeOptions": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        }
-                                    }
-                                },
-                                "csp": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "policy": {
-                                            "type": "string"
-                                        },
-                                        "reportOnlyPolicy": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "referrerPolicy": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "option": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "permissionPolicy": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "option": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "xssProtection": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "block": {
-                                            "type": "boolean"
-                                        },
-                                        "onXss": {
-                                            "type": "boolean"
-                                        }
-                                    }
-                                }
-                            }
+                        "host": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The host Schema",
+                            "examples": [
+                                "mysql-primary"
+                            ]
                         },
-                        "upgradeMigrationConfigs": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "force": {
-                                    "type": "boolean"
-                                },
-                                "migrationLimitParam": {
-                                    "type": "integer"
-                                }
-                            }
+                        "port": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The port Schema",
+                            "examples": [
+                                3306
+                            ]
                         },
-                        "pipelineServiceClientConfig": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "auth": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "password": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "username": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "apiEndpoint": {
-                                    "type": "string"
-                                },
-                                "enabled": {
-                                    "type": "boolean"
-                                },
-                                "className": {
-                                    "type": "string"
-                                },
-                                "ingestionIpInfoEnabled": {
-                                    "type": "boolean"
-                                },
-                                "healthCheckInterval": {
-                                    "type": "integer"
-                                },
-                                "metadataApiEndpoint": {
-                                    "type": "string"
-                                },
-                                "maskPasswordsApi": {
-                                    "type": "boolean"
-                                },
-                                "sslCertificatePath": {
-                                    "type": "string"
-                                },
-                                "verifySsl": {
-                                    "type": "string"
-                                },
-                                "hostIp": {
-                                    "type": "string"
-                                }
-                            }
+                        "driverClass": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The driverClass Schema",
+                            "examples": [
+                                "com.mysql.cj.jdbc.Driver"
+                            ]
                         },
-                        "authentication": {
+                        "dbScheme": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The dbScheme Schema",
+                            "examples": [
+                                "mysql"
+                            ]
+                        },
+                        "dbUseSSL": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The dbUseSSL Schema",
+                            "examples": [
+                                false
+                            ]
+                        },
+                        "databaseName": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The databaseName Schema",
+                            "examples": [
+                                "openmetadata_db"
+                            ]
+                        },
+                        "auth": {
                             "type": "object",
-                            "additionalProperties": false,
+                            "default": {},
+                            "title": "The auth Schema",
+                            "required": [
+                                "username",
+                                "password"
+                            ],
                             "properties": {
-                                "authority": {
-                                    "type": "string"
-                                },
-                                "callbackUrl": {
-                                    "type": "string"
-                                },
-                                "clientId": {
-                                    "type": "string"
-                                },
-                                "enableSelfSignup": {
-                                    "type": "boolean"
-                                },
-                                "jwtPrincipalClaims": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "provider": {
+                                "username": {
                                     "type": "string",
-                                    "enum": [
-                                        "basic",
-                                        "azure",
-                                        "auth0",
-                                        "custom-oidc",
-                                        "google",
-                                        "okta",
-                                        "aws-cognito",
-                                        "ldap",
-                                        "saml"
+                                    "default": "",
+                                    "title": "The username Schema",
+                                    "examples": [
+                                        "openmetadata_user"
                                     ]
-                                },
-                                "publicKeys": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    },
-                                    "default": [
-                                        "http://openmetadata:8585/api/v1/system/config/jwks"
-                                    ]
-                                },
-                                "ldapConfiguration": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "host": {
-                                            "type": "string"
-                                        },
-                                        "port": {
-                                            "type": "integer"
-                                        },
-                                        "dnAdminPrincipal": {
-                                            "type": "string"
-                                        },
-                                        "dnAdminPassword": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretRef": {
-                                                    "type": "string"
-                                                },
-                                                "secretKey": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "userBaseDN": {
-                                            "type": "string"
-                                        },
-                                        "mailAttributeName": {
-                                            "type": "string"
-                                        },
-                                        "maxPoolSize": {
-                                            "type": "integer"
-                                        },
-                                        "sslEnabled": {
-                                            "type": "boolean"
-                                        },
-                                        "truststoreConfigType": {
-                                            "type": "string",
-                                            "enum": [
-                                                "CustomTrustStore",
-                                                "HostName",
-                                                "JVMDefault",
-                                                "TrustAll"
-                                            ]
-                                        },
-                                        "trustStoreConfig": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "customTrustManagerConfig": {
-                                                    "type": "object",
-                                                    "additionalProperties": false,
-                                                    "properties": {
-                                                        "trustStoreFilePath": {
-                                                            "type": "string"
-                                                        },
-                                                        "trustStoreFilePassword": {
-                                                            "type": "object",
-                                                            "additionalProperties": false,
-                                                            "properties": {
-                                                                "secretRef": {
-                                                                    "type": "string"
-                                                                },
-                                                                "secretKey": {
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        },
-                                                        "trustStoreFileFormat": {
-                                                            "type": "string"
-                                                        },
-                                                        "verifyHostname": {
-                                                            "type": "boolean"
-                                                        },
-                                                        "examineValidityDates": {
-                                                            "type": "boolean"
-                                                        }
-                                                    }
-                                                },
-                                                "hostNameConfig": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "allowWildCards": {
-                                                            "type": "boolean"
-                                                        },
-                                                        "acceptableHostNames": {
-                                                            "type": "array",
-                                                            "items": {
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                "jvmDefaultConfig": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "verifyHostname": {
-                                                            "type": "boolean"
-                                                        }
-                                                    }
-                                                },
-                                                "trustAllConfig": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "examineValidityDates": {
-                                                            "type": "boolean"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "saml": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "debugMode": {
-                                            "type": "boolean"
-                                        },
-                                        "idp": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "entityId": {
-                                                    "type": "string"
-                                                },
-                                                "ssoLoginUrl": {
-                                                    "type": "string"
-                                                },
-                                                "idpX509Certificate": {
-                                                    "type": "object",
-                                                    "additionalProperties": false,
-                                                    "properties": {
-                                                        "secretRef": {
-                                                            "type": "string"
-                                                        },
-                                                        "secretKey": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                },
-                                                "authorityUrl": {
-                                                    "type": "string"
-                                                },
-                                                "nameId": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "sp": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "entityId": {
-                                                    "type": "string"
-                                                },
-                                                "acs": {
-                                                    "type": "string"
-                                                },
-                                                "spX509Certificate": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "secretRef": {
-                                                            "type": "string"
-                                                        },
-                                                        "secretKey": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                },
-                                                "callback": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "security": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "strictMode": {
-                                                    "type": "boolean"
-                                                },
-                                                "tokenValidity": {
-                                                    "type": "integer"
-                                                },
-                                                "sendEncryptedNameId": {
-                                                    "type": "boolean"
-                                                },
-                                                "sendSignedAuthRequest": {
-                                                    "type": "boolean"
-                                                },
-                                                "signSpMetadata": {
-                                                    "type": "boolean"
-                                                },
-                                                "wantMessagesSigned": {
-                                                    "type": "boolean"
-                                                },
-                                                "wantAssertionsSigned": {
-                                                    "type": "boolean"
-                                                },
-                                                "wantAssertionEncrypted": {
-                                                    "type": "boolean"
-                                                },
-                                                "wantNameIdEncrypted": {
-                                                    "type": "boolean"
-                                                },
-                                                "keyStoreFilePath": {
-                                                    "type": "string"
-                                                },
-                                                "keyStoreAlias": {
-                                                    "type": "object",
-                                                    "additionalProperties": false,
-                                                    "properties": {
-                                                        "secretRef": {
-                                                            "type": "string"
-                                                        },
-                                                        "secretKey": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                },
-                                                "keyStorePassword": {
-                                                    "type": "object",
-                                                    "additionalProperties": false,
-                                                    "properties": {
-                                                        "secretRef": {
-                                                            "type": "string"
-                                                        },
-                                                        "secretKey": {
-                                                            "type": "string"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "authorizer": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "allowedEmailRegistrationDomains": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "className": {
-                                    "type": "string",
-                                    "enum": [
-                                        "org.openmetadata.service.security.DefaultAuthorizer"
-                                    ]
-                                },
-                                "containerRequestFilter": {
-                                    "type": "string",
-                                    "enum": [
-                                        "org.openmetadata.service.security.JwtFilter"
-                                    ]
-                                },
-                                "enableSecureSocketConnection": {
-                                    "type": "boolean"
-                                },
-                                "enforcePrincipalDomain": {
-                                    "type": "boolean"
-                                },
-                                "initialAdmins": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "principalDomain": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "basicLogin": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "accessBlockTime": {
-                                    "type": "integer"
-                                },
-                                "maxLoginFailAttempts": {
-                                    "type": "integer"
-                                }
-                            }
-                        },
-                        "clusterName": {
-                            "type": "string"
-                        },
-                        "database": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "auth": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "password": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "username": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "databaseName": {
-                                    "type": "string"
-                                },
-                                "dbScheme": {
-                                    "type": "string"
-                                },
-                                "dbUseSSL": {
-                                    "type": "boolean"
-                                },
-                                "driverClass": {
-                                    "type": "string"
-                                },
-                                "host": {
-                                    "type": "string"
-                                },
-                                "port": {
-                                    "type": "integer"
-                                }
-                            }
-                        },
-                        "elasticsearch": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "auth": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "password": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "username": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "batchSize": {
-                                    "type": "integer"
-                                },
-                                "connectionTimeoutSecs": {
-                                    "type": "integer"
-                                },
-                                "host": {
-                                    "type": "string"
-                                },
-                                "keepAliveTimeoutSecs": {
-                                    "type": "integer"
-                                },
-                                "port": {
-                                    "type": "integer"
-                                },
-                                "scheme": {
-                                    "type": "string"
-                                },
-                                "searchType": {
-                                    "type": "string",
-                                    "default": "elasticsearch",
-                                    "enum": [
-                                        "elasticsearch",
-                                        "opensearch"
-                                    ]
-                                },
-                                "socketTimeoutSecs": {
-                                    "type": "integer"
-                                },
-                                "searchIndexMappingLanguage": {
-                                    "type": "string"
-                                },
-                                "trustStore": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "password": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "path": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "eventMonitor": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "type": {
-                                    "type": "string",
-                                    "enum": [
-                                        "prometheus",
-                                        "cloudwatch"
-                                    ]
-                                },
-                                "batchSize": {
-                                    "type": "integer"
-                                },
-                                "pathPattern": {
-                                    "type": "array"
-                                },
-                                "latency": {
-                                    "type": "array"
-                                }
-                            },
-                            "title": "eventMonitor"
-                        },
-                        "fernetkey": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "secretRef": {
-                                    "type": "string"
-                                },
-                                "secretKey": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "jwtTokenConfiguration": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "enabled": {
-                                    "type": "boolean"
-                                },
-                                "jwtissuer": {
-                                    "type": "string"
-                                },
-                                "keyId": {
-                                    "type": "string"
-                                },
-                                "rsaprivateKeyFilePath": {
-                                    "type": "string"
-                                },
-                                "rsapublicKeyFilePath": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "logLevel": {
-                            "type": "string"
-                        },
-                        "openmetadata": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "adminPort": {
-                                    "type": "integer"
-                                },
-                                "host": {
-                                    "type": "string"
-                                },
-                                "port": {
-                                    "type": "integer"
-                                },
-                                "uri": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "secretsManager": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "additionalParameters": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "accessKeyId": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        },
-                                        "enabled": {
-                                            "type": "boolean"
-                                        },
-                                        "region": {
-                                            "type": "string"
-                                        },
-                                        "secretAccessKey": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "secretKey": {
-                                                    "type": "string"
-                                                },
-                                                "secretRef": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "provider": {
-                                    "type": "string",
-                                    "enum": [
-                                        "noop",
-                                        "aws",
-                                        "aws-ssm",
-                                        "managed-aws",
-                                        "managed-aws-ssm",
-                                        "in-memory"
-                                    ]
-                                }
-                            }
-                        },
-                        "smtpConfig": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "emailingEntity": {
-                                    "type": "string"
-                                },
-                                "enableSmtpServer": {
-                                    "type": "boolean"
-                                },
-                                "openMetadataUrl": {
-                                    "type": "string"
                                 },
                                 "password": {
                                     "type": "object",
-                                    "additionalProperties": false,
+                                    "default": {},
+                                    "title": "The password Schema",
+                                    "required": [
+                                        "secretRef",
+                                        "secretKey"
+                                    ],
                                     "properties": {
-                                        "secretKey": {
-                                            "type": "string"
-                                        },
                                         "secretRef": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "default": "",
+                                            "title": "The secretRef Schema",
+                                            "examples": [
+                                                "mysql-secrets"
+                                            ]
+                                        },
+                                        "secretKey": {
+                                            "type": "string",
+                                            "default": "",
+                                            "title": "The secretKey Schema",
+                                            "examples": [
+                                                "openmetadata-mysql-password"
+                                            ]
                                         }
-                                    }
-                                },
-                                "senderMail": {
-                                    "type": "string"
-                                },
-                                "serverEndpoint": {
-                                    "type": "string"
-                                },
-                                "serverPort": {
-                                    "type": "string"
-                                },
-                                "supportUrl": {
-                                    "type": "string"
-                                },
-                                "transportationStrategy": {
-                                    "type": "string"
-                                },
-                                "username": {
-                                    "type": "string"
+                                    },
+                                    "examples": [{
+                                        "secretRef": "mysql-secrets",
+                                        "secretKey": "openmetadata-mysql-password"
+                                    }]
                                 }
-                            }
-                        },
-                        "maskPasswordsApi": {
-                            "type": "boolean"
+                            },
+                            "examples": [{
+                                "username": "openmetadata_user",
+                                "password": {
+                                    "secretRef": "mysql-secrets",
+                                    "secretKey": "openmetadata-mysql-password"
+                                }
+                            }]
                         }
-                    }
-                }
-            }
-        },
-        "image": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "pullPolicy": {
-                    "type": "string"
+                    },
+                    "examples": [{
+                        "host": "mysql-primary",
+                        "port": 3306,
+                        "driverClass": "com.mysql.cj.jdbc.Driver",
+                        "dbScheme": "mysql",
+                        "dbUseSSL": false,
+                        "databaseName": "openmetadata_db",
+                        "auth": {
+                            "username": "openmetadata_user",
+                            "password": {
+                                "secretRef": "mysql-secrets",
+                                "secretKey": "openmetadata-mysql-password"
+                            }
+                        }
+                    }]
+                },
+                "image": {
+                    "type": "null",
+                    "default": null,
+                    "title": "The image Schema",
+                    "examples": [
+                        null
+                    ]
                 },
                 "repository": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "",
+                    "title": "The repository Schema",
+                    "examples": [
+                        "docker.getcollate.io/openmetadata/server"
+                    ]
                 },
                 "tag": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "",
+                    "title": "The tag Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The pullPolicy Schema",
+                    "examples": [
+                        "Always"
+                    ]
                 }
-            }
+            },
+            "examples": [{
+                "database": {
+                    "host": "mysql-primary",
+                    "port": 3306,
+                    "driverClass": "com.mysql.cj.jdbc.Driver",
+                    "dbScheme": "mysql",
+                    "dbUseSSL": false,
+                    "databaseName": "openmetadata_db",
+                    "auth": {
+                        "username": "openmetadata_user",
+                        "password": {
+                            "secretRef": "mysql-secrets",
+                            "secretKey": "openmetadata-mysql-password"
+                        }
+                    }
+                },
+                "image": null,
+                "repository": "docker.getcollate.io/openmetadata/server",
+                "tag": "",
+                "pullPolicy": "Always"
+            }]
         },
-        "imagePullSecrets": {
-            "type": "array"
-        },
-        "ingress": {
+        "mysql": {
             "type": "object",
-            "additionalProperties": false,
+            "default": {},
+            "title": "The mysql Schema",
+            "required": [
+                "enabled",
+                "fullnameOverride",
+                "auth",
+                "primary",
+                "initdbScripts"
+            ],
             "properties": {
-                "annotations": {
-                    "type": "object"
-                },
-                "className": {
-                    "type": "string"
-                },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
                 },
-                "hosts": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "host": {
-                                "type": "string"
-                            },
-                            "paths": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "path": {
-                                            "type": "string"
-                                        },
-                                        "pathType": {
-                                            "type": "string"
-                                        }
-                                    }
+                "fullnameOverride": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The fullnameOverride Schema",
+                    "examples": [
+                        "mysql"
+                    ]
+                },
+                "auth": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The auth Schema",
+                    "required": [
+                        "rootPassword"
+                    ],
+                    "properties": {
+                        "rootPassword": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The rootPassword Schema",
+                            "examples": [
+                                "password"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "rootPassword": "password"
+                    }]
+                },
+                "primary": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The primary Schema",
+                    "required": [
+                        "extraFlags",
+                        "persistence",
+                        "service"
+                    ],
+                    "properties": {
+                        "extraFlags": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The extraFlags Schema",
+                            "examples": [
+                                "--sort_buffer_size=10M"
+                            ]
+                        },
+                        "persistence": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The persistence Schema",
+                            "required": [
+                                "size"
+                            ],
+                            "properties": {
+                                "size": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The size Schema",
+                                    "examples": [
+                                        "50Gi"
+                                    ]
                                 }
-                            }
-                        }
-                    }
-                },
-                "tls": {
-                    "type": "array"
-                }
-            }
-        },
-        "livenessProbe": {
-            "type": "object",
-            "properties": {
-                "failureThreshold": {
-                    "type": "integer"
-                },
-                "initialDelaySeconds": {
-                    "type": "integer"
-                },
-                "periodSeconds": {
-                    "type": "integer"
-                },
-                "httpGet": {
-                    "type": "object",
-                    "properties": {
-                        "path": {
-                            "type": "string"
+                            },
+                            "examples": [{
+                                "size": "50Gi"
+                            }]
                         },
-                        "port": {
-                            "type": "string"
+                        "service": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The service Schema",
+                            "required": [
+                                "nodePort"
+                            ],
+                            "properties": {
+                                "nodePort": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The nodePort Schema",
+                                    "examples": [
+                                        3306
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "nodePort": 3306
+                            }]
                         }
-                    }
-                }
-            }
-        },
-        "nameOverride": {
-            "type": "string"
-        },
-        "nodeSelector": {
-            "type": "object"
-        },
-        "podSecurityContext": {
-            "type": "object"
-        },
-        "readinessProbe": {
-            "type": "object",
-            "properties": {
-                "failureThreshold": {
-                    "type": "integer"
-                },
-                "initialDelaySeconds": {
-                    "type": "integer"
-                },
-                "periodSeconds": {
-                    "type": "integer"
-                },
-                "httpGet": {
-                    "type": "object",
-                    "properties": {
-                        "path": {
-                            "type": "string"
+                    },
+                    "examples": [{
+                        "extraFlags": "--sort_buffer_size=10M",
+                        "persistence": {
+                            "size": "50Gi"
                         },
-                        "port": {
-                            "type": "string"
+                        "service": {
+                            "nodePort": 3306
                         }
-                    }
-                }
-            }
-        },
-        "replicaCount": {
-            "type": "integer"
-        },
-        "resources": {
-            "type": "object"
-        },
-        "securityContext": {
-            "type": "object"
-        },
-        "service": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "adminPort": {
-                    "type": "integer"
+                    }]
                 },
-                "annotations": {
-                    "type": "object"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "type": {
-                    "type": "string"
-                }
-            }
-        },
-        "serviceAccount": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "annotations": {
-                    "type": "object"
-                },
-                "create": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
-        },
-        "sidecars": {
-            "type": "array"
-        },
-        "startupProbe": {
-            "type": "object",
-            "properties": {
-                "failureThreshold": {
-                    "type": "integer"
-                },
-                "periodSeconds": {
-                    "type": "integer"
-                },
-                "httpGet": {
+                "initdbScripts": {
                     "type": "object",
-                    
+                    "default": {},
+                    "title": "The initdbScripts Schema",
+                    "required": [
+                        "init_openmetadata_db_scripts.sql",
+                        "init_airflow_db_scripts.sql"
+                    ],
                     "properties": {
-                        "path": {
-                            "type": "string"
+                        "init_openmetadata_db_scripts.sql": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The init_openmetadata_db_scripts.sql Schema",
+                            "examples": [
+                                "CREATE DATABASE openmetadata_db;\nCREATE USER 'openmetadata_user'@'%' IDENTIFIED BY 'openmetadata_password';\nGRANT ALL PRIVILEGES ON openmetadata_db.* TO 'openmetadata_user'@'%' WITH GRANT OPTION;\ncommit;\n"
+                            ]
                         },
-                        "port": {
-                            "type": "string"
+                        "init_airflow_db_scripts.sql": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The init_airflow_db_scripts.sql Schema",
+                            "examples": [
+                                "CREATE DATABASE airflow_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'airflow_user'@'%' IDENTIFIED BY 'airflow_pass';\nGRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user'@'%' WITH GRANT OPTION;\ncommit;\n"
+                            ]
                         }
+                    },
+                    "examples": [{
+                        "init_openmetadata_db_scripts.sql": "CREATE DATABASE openmetadata_db;\nCREATE USER 'openmetadata_user'@'%' IDENTIFIED BY 'openmetadata_password';\nGRANT ALL PRIVILEGES ON openmetadata_db.* TO 'openmetadata_user'@'%' WITH GRANT OPTION;\ncommit;\n",
+                        "init_airflow_db_scripts.sql": "CREATE DATABASE airflow_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'airflow_user'@'%' IDENTIFIED BY 'airflow_pass';\nGRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user'@'%' WITH GRANT OPTION;\ncommit;\n"
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "fullnameOverride": "mysql",
+                "auth": {
+                    "rootPassword": "password"
+                },
+                "primary": {
+                    "extraFlags": "--sort_buffer_size=10M",
+                    "persistence": {
+                        "size": "50Gi"
+                    },
+                    "service": {
+                        "nodePort": 3306
                     }
                 },
-                "successThreshold": {
-                    "type": "integer"
+                "initdbScripts": {
+                    "init_openmetadata_db_scripts.sql": "CREATE DATABASE openmetadata_db;\nCREATE USER 'openmetadata_user'@'%' IDENTIFIED BY 'openmetadata_password';\nGRANT ALL PRIVILEGES ON openmetadata_db.* TO 'openmetadata_user'@'%' WITH GRANT OPTION;\ncommit;\n",
+                    "init_airflow_db_scripts.sql": "CREATE DATABASE airflow_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'airflow_user'@'%' IDENTIFIED BY 'airflow_pass';\nGRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user'@'%' WITH GRANT OPTION;\ncommit;\n"
                 }
-            }
+            }]
         },
-        "tolerations": {
-            "type": "array"
-        },
-        "commonLabels": {
-            "type": "object"
-        },
-        "podAnnotations": {
-            "type": "object"
-        },
-        "networkPolicy": {
+        "elasticsearch": {
             "type": "object",
-            "additionalProperties": false,
+            "default": {},
+            "title": "The elasticsearch Schema",
+            "required": [
+                "enabled",
+                "replicas",
+                "minimumMasterNodes",
+                "fullnameOverride",
+                "imagePullPolicy",
+                "esJavaOpts",
+                "maxUnavailable",
+                "clusterHealthCheckParams",
+                "resources"
+            ],
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "replicas": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The replicas Schema",
+                    "examples": [
+                        1
+                    ]
+                },
+                "minimumMasterNodes": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The minimumMasterNodes Schema",
+                    "examples": [
+                        1
+                    ]
+                },
+                "fullnameOverride": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The fullnameOverride Schema",
+                    "examples": [
+                        "elasticsearch"
+                    ]
+                },
+                "imagePullPolicy": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The imagePullPolicy Schema",
+                    "examples": [
+                        "Always"
+                    ]
+                },
+                "esJavaOpts": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The esJavaOpts Schema",
+                    "examples": [
+                        "-Xmx1024m -Xms1024m"
+                    ]
+                },
+                "maxUnavailable": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The maxUnavailable Schema",
+                    "examples": [
+                        0
+                    ]
+                },
+                "clusterHealthCheckParams": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The clusterHealthCheckParams Schema",
+                    "examples": [
+                        "wait_for_status=yellow\u0026timeout=20s"
+                    ]
+                },
+                "resources": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The resources Schema",
+                    "required": [
+                        "requests",
+                        "limits"
+                    ],
+                    "properties": {
+                        "requests": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The requests Schema",
+                            "required": [
+                                "cpu",
+                                "memory"
+                            ],
+                            "properties": {
+                                "cpu": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The cpu Schema",
+                                    "examples": [
+                                        "100m"
+                                    ]
+                                },
+                                "memory": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The memory Schema",
+                                    "examples": [
+                                        "256M"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "cpu": "100m",
+                                "memory": "256M"
+                            }]
+                        },
+                        "limits": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The limits Schema",
+                            "required": [
+                                "cpu",
+                                "memory"
+                            ],
+                            "properties": {
+                                "cpu": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The cpu Schema",
+                                    "examples": [
+                                        "2000m"
+                                    ]
+                                },
+                                "memory": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The memory Schema",
+                                    "examples": [
+                                        "2048M"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "cpu": "2000m",
+                                "memory": "2048M"
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "requests": {
+                            "cpu": "100m",
+                            "memory": "256M"
+                        },
+                        "limits": {
+                            "cpu": "2000m",
+                            "memory": "2048M"
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "replicas": 1,
+                "minimumMasterNodes": 1,
+                "fullnameOverride": "elasticsearch",
+                "imagePullPolicy": "Always",
+                "esJavaOpts": "-Xmx1024m -Xms1024m",
+                "maxUnavailable": 0,
+                "clusterHealthCheckParams": "wait_for_status=yellow\u0026timeout=20s",
+                "resources": {
+                    "requests": {
+                        "cpu": "100m",
+                        "memory": "256M"
+                    },
+                    "limits": {
+                        "cpu": "2000m",
+                        "memory": "2048M"
+                    }
+                }
+            }]
+        },
+        "airflow": {
+            "type": "object",
+            "default": {},
+            "title": "The airflow Schema",
+            "required": [
+                "enabled",
+                "airflow",
+                "web",
+                "postgresql",
+                "workers",
+                "flower",
+                "redis",
+                "externalDatabase",
+                "serviceAccount",
+                "scheduler",
+                "dags",
+                "logs"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "airflow": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The airflow Schema",
+                    "required": [
+                        "image",
+                        "executor",
+                        "config",
+                        "users"
+                    ],
+                    "properties": {
+                        "image": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The image Schema",
+                            "required": [
+                                "repository",
+                                "tag",
+                                "pullPolicy"
+                            ],
+                            "properties": {
+                                "repository": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The repository Schema",
+                                    "examples": [
+                                        "docker.getcollate.io/openmetadata/ingestion"
+                                    ]
+                                },
+                                "tag": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The tag Schema",
+                                    "examples": [
+                                        "1.1.7"
+                                    ]
+                                },
+                                "pullPolicy": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The pullPolicy Schema",
+                                    "examples": [
+                                        "IfNotPresent"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "repository": "docker.getcollate.io/openmetadata/ingestion",
+                                "tag": "1.1.7",
+                                "pullPolicy": "IfNotPresent"
+                            }]
+                        },
+                        "executor": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The executor Schema",
+                            "examples": [
+                                "KubernetesExecutor"
+                            ]
+                        },
+                        "config": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The config Schema",
+                            "required": [
+                                "AIRFLOW__API__AUTH_BACKENDS",
+                                "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY"
+                            ],
+                            "properties": {
+                                "AIRFLOW__API__AUTH_BACKENDS": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The AIRFLOW__API__AUTH_BACKENDS Schema",
+                                    "examples": [
+                                        "airflow.api.auth.backend.basic_auth"
+                                    ]
+                                },
+                                "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS Schema",
+                                    "examples": [
+                                        "/opt/airflow/dags"
+                                    ]
+                                },
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION Schema",
+                                    "examples": [
+                                        ""
+                                    ]
+                                },
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID Schema",
+                                    "examples": [
+                                        ""
+                                    ]
+                                },
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY Schema",
+                                    "examples": [
+                                        ""
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "AIRFLOW__API__AUTH_BACKENDS": "airflow.api.auth.backend.basic_auth",
+                                "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS": "/opt/airflow/dags",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION": "",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID": "",
+                                "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY": ""
+                            }]
+                        },
+                        "users": {
+                            "type": "array",
+                            "default": [],
+                            "title": "The users Schema",
+                            "items": {
+                                "type": "object",
+                                "default": {},
+                                "title": "A Schema",
+                                "required": [
+                                    "username",
+                                    "password",
+                                    "role",
+                                    "email",
+                                    "firstName",
+                                    "lastName"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The username Schema",
+                                        "examples": [
+                                            "admin"
+                                        ]
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The password Schema",
+                                        "examples": [
+                                            "admin"
+                                        ]
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The role Schema",
+                                        "examples": [
+                                            "Admin"
+                                        ]
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The email Schema",
+                                        "examples": [
+                                            "r.beygi1@gmail.com"
+                                        ]
+                                    },
+                                    "firstName": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The firstName Schema",
+                                        "examples": [
+                                            "Reza"
+                                        ]
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The lastName Schema",
+                                        "examples": [
+                                            "Beygi"
+                                        ]
+                                    }
+                                },
+                                "examples": [{
+                                    "username": "admin",
+                                    "password": "admin",
+                                    "role": "Admin",
+                                    "email": "r.beygi1@gmail.com",
+                                    "firstName": "Reza",
+                                    "lastName": "Beygi"
+                                }]
+                            },
+                            "examples": [
+                                [{
+                                    "username": "admin",
+                                    "password": "admin",
+                                    "role": "Admin",
+                                    "email": "r.beygi1@gmail.com",
+                                    "firstName": "Reza",
+                                    "lastName": "Beygi"
+                                }]
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "image": {
+                            "repository": "docker.getcollate.io/openmetadata/ingestion",
+                            "tag": "1.1.7",
+                            "pullPolicy": "IfNotPresent"
+                        },
+                        "executor": "KubernetesExecutor",
+                        "config": {
+                            "AIRFLOW__API__AUTH_BACKENDS": "airflow.api.auth.backend.basic_auth",
+                            "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS": "/opt/airflow/dags",
+                            "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION": "",
+                            "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID": "",
+                            "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY": ""
+                        },
+                        "users": [{
+                            "username": "admin",
+                            "password": "admin",
+                            "role": "Admin",
+                            "email": "r.beygi1@gmail.com",
+                            "firstName": "Reza",
+                            "lastName": "Beygi"
+                        }]
+                    }]
+                },
+                "web": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The web Schema",
+                    "required": [
+                        "extraVolumes",
+                        "extraVolumeMounts",
+                        "readinessProbe",
+                        "livenessProbe"
+                    ],
+                    "properties": {
+                        "extraVolumes": {
+                            "type": "array",
+                            "default": [],
+                            "title": "The extraVolumes Schema",
+                            "items": {
+                                "type": "object",
+                                "default": {},
+                                "title": "A Schema",
+                                "required": [
+                                    "name",
+                                    "configMap"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The name Schema",
+                                        "examples": [
+                                            "pod-template"
+                                        ]
+                                    },
+                                    "configMap": {
+                                        "type": "object",
+                                        "default": {},
+                                        "title": "The configMap Schema",
+                                        "required": [
+                                            "name",
+                                            "defaultMode"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "default": "",
+                                                "title": "The name Schema",
+                                                "examples": [
+                                                    "openmetadata-pod-template"
+                                                ]
+                                            },
+                                            "defaultMode": {
+                                                "type": "integer",
+                                                "default": 0,
+                                                "title": "The defaultMode Schema",
+                                                "examples": [
+                                                    420
+                                                ]
+                                            }
+                                        },
+                                        "examples": [{
+                                            "name": "openmetadata-pod-template",
+                                            "defaultMode": 420
+                                        }]
+                                    }
+                                },
+                                "examples": [{
+                                    "name": "pod-template",
+                                    "configMap": {
+                                        "name": "openmetadata-pod-template",
+                                        "defaultMode": 420
+                                    }
+                                }]
+                            },
+                            "examples": [
+                                [{
+                                    "name": "pod-template",
+                                    "configMap": {
+                                        "name": "openmetadata-pod-template",
+                                        "defaultMode": 420
+                                    }
+                                }]
+                            ]
+                        },
+                        "extraVolumeMounts": {
+                            "type": "array",
+                            "default": [],
+                            "title": "The extraVolumeMounts Schema",
+                            "items": {
+                                "type": "object",
+                                "default": {},
+                                "title": "A Schema",
+                                "required": [
+                                    "name",
+                                    "readOnly",
+                                    "subPath",
+                                    "mountPath"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The name Schema",
+                                        "examples": [
+                                            "pod-template"
+                                        ]
+                                    },
+                                    "readOnly": {
+                                        "type": "boolean",
+                                        "default": false,
+                                        "title": "The readOnly Schema",
+                                        "examples": [
+                                            true
+                                        ]
+                                    },
+                                    "subPath": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The subPath Schema",
+                                        "examples": [
+                                            "pod_template.yaml"
+                                        ]
+                                    },
+                                    "mountPath": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The mountPath Schema",
+                                        "examples": [
+                                            "/opt/airflow/pod_templates/pod_template.yaml"
+                                        ]
+                                    }
+                                },
+                                "examples": [{
+                                    "name": "pod-template",
+                                    "readOnly": true,
+                                    "subPath": "pod_template.yaml",
+                                    "mountPath": "/opt/airflow/pod_templates/pod_template.yaml"
+                                }]
+                            },
+                            "examples": [
+                                [{
+                                    "name": "pod-template",
+                                    "readOnly": true,
+                                    "subPath": "pod_template.yaml",
+                                    "mountPath": "/opt/airflow/pod_templates/pod_template.yaml"
+                                }]
+                            ]
+                        },
+                        "readinessProbe": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The readinessProbe Schema",
+                            "required": [
+                                "enabled",
+                                "initialDelaySeconds",
+                                "periodSeconds",
+                                "timeoutSeconds",
+                                "failureThreshold"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "The enabled Schema",
+                                    "examples": [
+                                        true
+                                    ]
+                                },
+                                "initialDelaySeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The initialDelaySeconds Schema",
+                                    "examples": [
+                                        60
+                                    ]
+                                },
+                                "periodSeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The periodSeconds Schema",
+                                    "examples": [
+                                        30
+                                    ]
+                                },
+                                "timeoutSeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The timeoutSeconds Schema",
+                                    "examples": [
+                                        10
+                                    ]
+                                },
+                                "failureThreshold": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The failureThreshold Schema",
+                                    "examples": [
+                                        10
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": true,
+                                "initialDelaySeconds": 60,
+                                "periodSeconds": 30,
+                                "timeoutSeconds": 10,
+                                "failureThreshold": 10
+                            }]
+                        },
+                        "livenessProbe": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The livenessProbe Schema",
+                            "required": [
+                                "enabled",
+                                "initialDelaySeconds",
+                                "periodSeconds",
+                                "timeoutSeconds",
+                                "failureThreshold"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "The enabled Schema",
+                                    "examples": [
+                                        true
+                                    ]
+                                },
+                                "initialDelaySeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The initialDelaySeconds Schema",
+                                    "examples": [
+                                        60
+                                    ]
+                                },
+                                "periodSeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The periodSeconds Schema",
+                                    "examples": [
+                                        30
+                                    ]
+                                },
+                                "timeoutSeconds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The timeoutSeconds Schema",
+                                    "examples": [
+                                        10
+                                    ]
+                                },
+                                "failureThreshold": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The failureThreshold Schema",
+                                    "examples": [
+                                        10
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": true,
+                                "initialDelaySeconds": 60,
+                                "periodSeconds": 30,
+                                "timeoutSeconds": 10,
+                                "failureThreshold": 10
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "extraVolumes": [{
+                            "name": "pod-template",
+                            "configMap": {
+                                "name": "openmetadata-pod-template",
+                                "defaultMode": 420
+                            }
+                        }],
+                        "extraVolumeMounts": [{
+                            "name": "pod-template",
+                            "readOnly": true,
+                            "subPath": "pod_template.yaml",
+                            "mountPath": "/opt/airflow/pod_templates/pod_template.yaml"
+                        }],
+                        "readinessProbe": {
+                            "enabled": true,
+                            "initialDelaySeconds": 60,
+                            "periodSeconds": 30,
+                            "timeoutSeconds": 10,
+                            "failureThreshold": 10
+                        },
+                        "livenessProbe": {
+                            "enabled": true,
+                            "initialDelaySeconds": 60,
+                            "periodSeconds": 30,
+                            "timeoutSeconds": 10,
+                            "failureThreshold": 10
+                        }
+                    }]
+                },
+                "postgresql": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The postgresql Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "workers": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The workers Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "flower": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The flower Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "redis": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The redis Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "externalDatabase": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The externalDatabase Schema",
+                    "required": [
+                        "type",
+                        "host",
+                        "port",
+                        "database",
+                        "user",
+                        "passwordSecret",
+                        "passwordSecretKey"
+                    ],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The type Schema",
+                            "examples": [
+                                "mysql"
+                            ]
+                        },
+                        "host": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The host Schema",
+                            "examples": [
+                                "mysql-primary"
+                            ]
+                        },
+                        "port": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The port Schema",
+                            "examples": [
+                                3306
+                            ]
+                        },
+                        "database": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The database Schema",
+                            "examples": [
+                                "airflow_db"
+                            ]
+                        },
+                        "user": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The user Schema",
+                            "examples": [
+                                "airflow_user"
+                            ]
+                        },
+                        "passwordSecret": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The passwordSecret Schema",
+                            "examples": [
+                                "airflow-mysql-secrets"
+                            ]
+                        },
+                        "passwordSecretKey": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The passwordSecretKey Schema",
+                            "examples": [
+                                "airflow-mysql-password"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "type": "mysql",
+                        "host": "mysql-primary",
+                        "port": 3306,
+                        "database": "airflow_db",
+                        "user": "airflow_user",
+                        "passwordSecret": "airflow-mysql-secrets",
+                        "passwordSecretKey": "airflow-mysql-password"
+                    }]
+                },
+                "serviceAccount": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The serviceAccount Schema",
+                    "required": [
+                        "create",
+                        "name"
+                    ],
+                    "properties": {
+                        "create": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The create Schema",
+                            "examples": [
+                                true
+                            ]
+                        },
+                        "name": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The name Schema",
+                            "examples": [
+                                "airflow"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "create": true,
+                        "name": "airflow"
+                    }]
+                },
+                "scheduler": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The scheduler Schema",
+                    "required": [
+                        "logCleanup"
+                    ],
+                    "properties": {
+                        "logCleanup": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The logCleanup Schema",
+                            "required": [
+                                "enabled"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "The enabled Schema",
+                                    "examples": [
+                                        false
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": false
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "logCleanup": {
+                            "enabled": false
+                        }
+                    }]
+                },
+                "dags": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The dags Schema",
+                    "required": [
+                        "persistence"
+                    ],
+                    "properties": {
+                        "persistence": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The persistence Schema",
+                            "required": [
+                                "enabled",
+                                "storageClass",
+                                "size",
+                                "accessMode"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "The enabled Schema",
+                                    "examples": [
+                                        false
+                                    ]
+                                },
+                                "storageClass": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The storageClass Schema",
+                                    "examples": [
+                                        ""
+                                    ]
+                                },
+                                "size": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The size Schema",
+                                    "examples": [
+                                        "1Gi"
+                                    ]
+                                },
+                                "accessMode": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The accessMode Schema",
+                                    "examples": [
+                                        "ReadWriteMany"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": false,
+                                "storageClass": "",
+                                "size": "1Gi",
+                                "accessMode": "ReadWriteMany"
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "persistence": {
+                            "enabled": false,
+                            "storageClass": "",
+                            "size": "1Gi",
+                            "accessMode": "ReadWriteMany"
+                        }
+                    }]
+                },
+                "logs": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The logs Schema",
+                    "required": [
+                        "persistence"
+                    ],
+                    "properties": {
+                        "persistence": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The persistence Schema",
+                            "required": [
+                                "enabled",
+                                "storageClass",
+                                "accessMode",
+                                "size"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "title": "The enabled Schema",
+                                    "examples": [
+                                        false
+                                    ]
+                                },
+                                "storageClass": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The storageClass Schema",
+                                    "examples": [
+                                        ""
+                                    ]
+                                },
+                                "accessMode": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The accessMode Schema",
+                                    "examples": [
+                                        "ReadWriteMany"
+                                    ]
+                                },
+                                "size": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The size Schema",
+                                    "examples": [
+                                        "1Gi"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": false,
+                                "storageClass": "",
+                                "accessMode": "ReadWriteMany",
+                                "size": "1Gi"
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "persistence": {
+                            "enabled": false,
+                            "storageClass": "",
+                            "accessMode": "ReadWriteMany",
+                            "size": "1Gi"
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "airflow": {
+                    "image": {
+                        "repository": "docker.getcollate.io/openmetadata/ingestion",
+                        "tag": "1.1.7",
+                        "pullPolicy": "IfNotPresent"
+                    },
+                    "executor": "KubernetesExecutor",
+                    "config": {
+                        "AIRFLOW__API__AUTH_BACKENDS": "airflow.api.auth.backend.basic_auth",
+                        "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS": "/opt/airflow/dags",
+                        "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION": "",
+                        "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID": "",
+                        "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY": ""
+                    },
+                    "users": [{
+                        "username": "admin",
+                        "password": "admin",
+                        "role": "Admin",
+                        "email": "r.beygi1@gmail.com",
+                        "firstName": "Reza",
+                        "lastName": "Beygi"
+                    }]
+                },
+                "web": {
+                    "extraVolumes": [{
+                        "name": "pod-template",
+                        "configMap": {
+                            "name": "openmetadata-pod-template",
+                            "defaultMode": 420
+                        }
+                    }],
+                    "extraVolumeMounts": [{
+                        "name": "pod-template",
+                        "readOnly": true,
+                        "subPath": "pod_template.yaml",
+                        "mountPath": "/opt/airflow/pod_templates/pod_template.yaml"
+                    }],
+                    "readinessProbe": {
+                        "enabled": true,
+                        "initialDelaySeconds": 60,
+                        "periodSeconds": 30,
+                        "timeoutSeconds": 10,
+                        "failureThreshold": 10
+                    },
+                    "livenessProbe": {
+                        "enabled": true,
+                        "initialDelaySeconds": 60,
+                        "periodSeconds": 30,
+                        "timeoutSeconds": 10,
+                        "failureThreshold": 10
+                    }
+                },
+                "postgresql": {
+                    "enabled": false
+                },
+                "workers": {
+                    "enabled": false
+                },
+                "flower": {
+                    "enabled": false
+                },
+                "redis": {
+                    "enabled": false
+                },
+                "externalDatabase": {
+                    "type": "mysql",
+                    "host": "mysql-primary",
+                    "port": 3306,
+                    "database": "airflow_db",
+                    "user": "airflow_user",
+                    "passwordSecret": "airflow-mysql-secrets",
+                    "passwordSecretKey": "airflow-mysql-password"
+                },
+                "serviceAccount": {
+                    "create": true,
+                    "name": "airflow"
+                },
+                "scheduler": {
+                    "logCleanup": {
+                        "enabled": false
+                    }
+                },
+                "dags": {
+                    "persistence": {
+                        "enabled": false,
+                        "storageClass": "",
+                        "size": "1Gi",
+                        "accessMode": "ReadWriteMany"
+                    }
+                },
+                "logs": {
+                    "persistence": {
+                        "enabled": false,
+                        "storageClass": "",
+                        "accessMode": "ReadWriteMany",
+                        "size": "1Gi"
+                    }
+                }
+            }]
+        }
+    },
+    "examples": [{
+        "omd": {
+            "database": {
+                "host": "mysql-primary",
+                "port": 3306,
+                "driverClass": "com.mysql.cj.jdbc.Driver",
+                "dbScheme": "mysql",
+                "dbUseSSL": false,
+                "databaseName": "openmetadata_db",
+                "auth": {
+                    "username": "openmetadata_user",
+                    "password": {
+                        "secretRef": "mysql-secrets",
+                        "secretKey": "openmetadata-mysql-password"
+                    }
+                }
+            },
+            "image": null,
+            "repository": "docker.getcollate.io/openmetadata/server",
+            "tag": "",
+            "pullPolicy": "Always"
+        },
+        "mysql": {
+            "enabled": true,
+            "fullnameOverride": "mysql",
+            "auth": {
+                "rootPassword": "password"
+            },
+            "primary": {
+                "extraFlags": "--sort_buffer_size=10M",
+                "persistence": {
+                    "size": "50Gi"
+                },
+                "service": {
+                    "nodePort": 3306
+                }
+            },
+            "initdbScripts": {
+                "init_openmetadata_db_scripts.sql": "CREATE DATABASE openmetadata_db;\nCREATE USER 'openmetadata_user'@'%' IDENTIFIED BY 'openmetadata_password';\nGRANT ALL PRIVILEGES ON openmetadata_db.* TO 'openmetadata_user'@'%' WITH GRANT OPTION;\ncommit;\n",
+                "init_airflow_db_scripts.sql": "CREATE DATABASE airflow_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'airflow_user'@'%' IDENTIFIED BY 'airflow_pass';\nGRANT ALL PRIVILEGES ON airflow_db.* TO 'airflow_user'@'%' WITH GRANT OPTION;\ncommit;\n"
+            }
+        },
+        "elasticsearch": {
+            "enabled": true,
+            "replicas": 1,
+            "minimumMasterNodes": 1,
+            "fullnameOverride": "elasticsearch",
+            "imagePullPolicy": "Always",
+            "esJavaOpts": "-Xmx1024m -Xms1024m",
+            "maxUnavailable": 0,
+            "clusterHealthCheckParams": "wait_for_status=yellow\u0026timeout=20s",
+            "resources": {
+                "requests": {
+                    "cpu": "100m",
+                    "memory": "256M"
+                },
+                "limits": {
+                    "cpu": "2000m",
+                    "memory": "2048M"
+                }
+            }
+        },
+        "airflow": {
+            "enabled": true,
+            "airflow": {
+                "image": {
+                    "repository": "docker.getcollate.io/openmetadata/ingestion",
+                    "tag": "1.1.7",
+                    "pullPolicy": "IfNotPresent"
+                },
+                "executor": "KubernetesExecutor",
+                "config": {
+                    "AIRFLOW__API__AUTH_BACKENDS": "airflow.api.auth.backend.basic_auth",
+                    "AIRFLOW__OPENMETADATA_AIRFLOW_APIS__DAG_GENERATED_CONFIGS": "/opt/airflow/dags",
+                    "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_REGION": "",
+                    "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY_ID": "",
+                    "AIRFLOW__OPENMETADATA_SECRETS_MANAGER__AWS_ACCESS_KEY": ""
+                },
+                "users": [{
+                    "username": "admin",
+                    "password": "admin",
+                    "role": "Admin",
+                    "email": "r.beygi1@gmail.com",
+                    "firstName": "Reza",
+                    "lastName": "Beygi"
+                }]
+            },
+            "web": {
+                "extraVolumes": [{
+                    "name": "pod-template",
+                    "configMap": {
+                        "name": "openmetadata-pod-template",
+                        "defaultMode": 420
+                    }
+                }],
+                "extraVolumeMounts": [{
+                    "name": "pod-template",
+                    "readOnly": true,
+                    "subPath": "pod_template.yaml",
+                    "mountPath": "/opt/airflow/pod_templates/pod_template.yaml"
+                }],
+                "readinessProbe": {
+                    "enabled": true,
+                    "initialDelaySeconds": 60,
+                    "periodSeconds": 30,
+                    "timeoutSeconds": 10,
+                    "failureThreshold": 10
+                },
+                "livenessProbe": {
+                    "enabled": true,
+                    "initialDelaySeconds": 60,
+                    "periodSeconds": 30,
+                    "timeoutSeconds": 10,
+                    "failureThreshold": 10
+                }
+            },
+            "postgresql": {
+                "enabled": false
+            },
+            "workers": {
+                "enabled": false
+            },
+            "flower": {
+                "enabled": false
+            },
+            "redis": {
+                "enabled": false
+            },
+            "externalDatabase": {
+                "type": "mysql",
+                "host": "mysql-primary",
+                "port": 3306,
+                "database": "airflow_db",
+                "user": "airflow_user",
+                "passwordSecret": "airflow-mysql-secrets",
+                "passwordSecretKey": "airflow-mysql-password"
+            },
+            "serviceAccount": {
+                "create": true,
+                "name": "airflow"
+            },
+            "scheduler": {
+                "logCleanup": {
+                    "enabled": false
+                }
+            },
+            "dags": {
+                "persistence": {
+                    "enabled": false,
+                    "storageClass": "",
+                    "size": "1Gi",
+                    "accessMode": "ReadWriteMany"
+                }
+            },
+            "logs": {
+                "persistence": {
+                    "enabled": false,
+                    "storageClass": "",
+                    "accessMode": "ReadWriteMany",
+                    "size": "1Gi"
                 }
             }
         }
-    }
+    }]
 }

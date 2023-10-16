@@ -1,38 +1,24 @@
 apiVersion: v2
-name: omd
-type: application
-version: 1.0.3
-appVersion: "1.1.4"
-
-home: https://open-metadata.org/
-
-sources:
-  - https://github.com/open-metadata/OpenMetadata
-  - https://github.com/open-metadata/openmetadata-helm-charts
-
-keywords:
-  - metadata
-  - data-science
-  - data
-  - machine-learning
-  - automation
-  - big-data
-  - bigdata
-  - artificial-intelligence
-  - datascience
-  - data-engineering
-  - data-catalog
-  - metadata-api
-  - governance
-  - data-profiling
-  - metadata-management
-  - dataengineering
-  - dataquality
-  - bigdataanalytics
-  - datadiscovery
-
+name: openmetadata
 maintainers:
-  - name: RezaBeygi
-    email: r.beygi@adin-mlops.ir
+  - name: RezaB
+    email: r.beygi1@gmail.com
+appVersion: "1.1.7"
+version: "1.1.7"
+kubeVersion: ">=1.20.0"
+description: "OpenMetaData 1.1.7" 
+type: application
 
-icon: https://open-metadata.org/images/favicon.png
+dependencies:
+  - name: mysql
+    version: "8.0.32"
+    alias: mysql
+    condition: mysql.enabled
+  - name: elasticsearch
+    version: "7.16.3"
+    condition: elasticsearch.enabled
+  - name: airflow
+    version: "8.8.0"
+    condition: airflow.enabled
+  - name: omd
+    version: "1.1.7"

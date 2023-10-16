@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 2.6.3
+keywords:
+  - airflow
+  - dag
+  - workflow
+maintainers:
+  - name: RezaBeygi
+    email: r.beygi1@gmail.com
+name: airflow
+version: 8.8.0

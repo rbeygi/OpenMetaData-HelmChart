@@ -1,0 +1,38 @@
+apiVersion: v2
+name: omd
+type: application
+version: 1.1.7
+appVersion: "1.1.7"
+
+home: https://open-metadata.org/
+
+sources:
+  - https://github.com/open-metadata/OpenMetadata
+  - https://github.com/open-metadata/openmetadata-helm-charts
+
+keywords:
+  - metadata
+  - data-science
+  - data
+  - machine-learning
+  - automation
+  - big-data
+  - bigdata
+  - artificial-intelligence
+  - datascience
+  - data-engineering
+  - data-catalog
+  - metadata-api
+  - governance
+  - data-profiling
+  - metadata-management
+  - dataengineering
+  - dataquality
+  - bigdataanalytics
+  - datadiscovery
+
+maintainers:
+  - name: RezaBeygi
+    email: r.beygi@adin-mlops.ir
+
+icon: https://open-metadata.org/images/favicon.png

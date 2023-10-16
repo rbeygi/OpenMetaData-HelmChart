@@ -1,0 +1,1705 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "clusterName",
+        "nodeGroup",
+        "masterService",
+        "roles",
+        "replicas",
+        "minimumMasterNodes",
+        "esMajorVersion",
+        "clusterDeprecationIndexing",
+        "esConfig",
+        "esJvmOptions",
+        "extraEnvs",
+        "envFrom",
+        "secretMounts",
+        "hostAliases",
+        "image",
+        "imageTag",
+        "imagePullPolicy",
+        "podAnnotations",
+        "labels",
+        "esJavaOpts",
+        "resources",
+        "initResources",
+        "networkHost",
+        "volumeClaimTemplate",
+        "rbac",
+        "podSecurityPolicy",
+        "persistence",
+        "extraVolumes",
+        "extraVolumeMounts",
+        "extraContainers",
+        "extraInitContainers",
+        "priorityClassName",
+        "antiAffinityTopologyKey",
+        "antiAffinity",
+        "nodeAffinity",
+        "podManagementPolicy",
+        "enableServiceLinks",
+        "protocol",
+        "httpPort",
+        "transportPort",
+        "service",
+        "updateStrategy",
+        "maxUnavailable",
+        "podSecurityContext",
+        "securityContext",
+        "terminationGracePeriod",
+        "sysctlVmMaxMapCount",
+        "readinessProbe",
+        "clusterHealthCheckParams",
+        "schedulerName",
+        "imagePullSecrets",
+        "nodeSelector",
+        "tolerations",
+        "ingress",
+        "nameOverride",
+        "fullnameOverride",
+        "healthNameOverride",
+        "lifecycle",
+        "sysctlInitContainer",
+        "keystore",
+        "networkPolicy",
+        "tests",
+        "fsGroup"
+    ],
+    "properties": {
+        "clusterName": {
+            "type": "string",
+            "default": "",
+            "title": "The clusterName Schema",
+            "examples": [
+                "elasticsearch"
+            ]
+        },
+        "nodeGroup": {
+            "type": "string",
+            "default": "",
+            "title": "The nodeGroup Schema",
+            "examples": [
+                "master"
+            ]
+        },
+        "masterService": {
+            "type": "string",
+            "default": "",
+            "title": "The masterService Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "roles": {
+            "type": "object",
+            "default": {},
+            "title": "The roles Schema",
+            "required": [
+                "master",
+                "ingest",
+                "data",
+                "remote_cluster_client",
+                "ml"
+            ],
+            "properties": {
+                "master": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The master Schema",
+                    "examples": [
+                        "true"
+                    ]
+                },
+                "ingest": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The ingest Schema",
+                    "examples": [
+                        "true"
+                    ]
+                },
+                "data": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The data Schema",
+                    "examples": [
+                        "true"
+                    ]
+                },
+                "remote_cluster_client": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The remote_cluster_client Schema",
+                    "examples": [
+                        "true"
+                    ]
+                },
+                "ml": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The ml Schema",
+                    "examples": [
+                        "true"
+                    ]
+                }
+            },
+            "examples": [{
+                "master": "true",
+                "ingest": "true",
+                "data": "true",
+                "remote_cluster_client": "true",
+                "ml": "true"
+            }]
+        },
+        "replicas": {
+            "type": "integer",
+            "default": 0,
+            "title": "The replicas Schema",
+            "examples": [
+                3
+            ]
+        },
+        "minimumMasterNodes": {
+            "type": "integer",
+            "default": 0,
+            "title": "The minimumMasterNodes Schema",
+            "examples": [
+                2
+            ]
+        },
+        "esMajorVersion": {
+            "type": "string",
+            "default": "",
+            "title": "The esMajorVersion Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "clusterDeprecationIndexing": {
+            "type": "string",
+            "default": "",
+            "title": "The clusterDeprecationIndexing Schema",
+            "examples": [
+                "false"
+            ]
+        },
+        "esConfig": {
+            "type": "object",
+            "default": {},
+            "title": "The esConfig Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "esJvmOptions": {
+            "type": "object",
+            "default": {},
+            "title": "The esJvmOptions Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "extraEnvs": {
+            "type": "array",
+            "default": [],
+            "title": "The extraEnvs Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "envFrom": {
+            "type": "array",
+            "default": [],
+            "title": "The envFrom Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "secretMounts": {
+            "type": "array",
+            "default": [],
+            "title": "The secretMounts Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "hostAliases": {
+            "type": "array",
+            "default": [],
+            "title": "The hostAliases Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "image": {
+            "type": "string",
+            "default": "",
+            "title": "The image Schema",
+            "examples": [
+                "docker.elastic.co/elasticsearch/elasticsearch"
+            ]
+        },
+        "imageTag": {
+            "type": "string",
+            "default": "",
+            "title": "The imageTag Schema",
+            "examples": [
+                "7.16.3"
+            ]
+        },
+        "imagePullPolicy": {
+            "type": "string",
+            "default": "",
+            "title": "The imagePullPolicy Schema",
+            "examples": [
+                "Always"
+            ]
+        },
+        "podAnnotations": {
+            "type": "object",
+            "default": {},
+            "title": "The podAnnotations Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "labels": {
+            "type": "object",
+            "default": {},
+            "title": "The labels Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "esJavaOpts": {
+            "type": "string",
+            "default": "",
+            "title": "The esJavaOpts Schema",
+            "examples": [
+                "-Xmx1024m -Xms1024m"
+            ]
+        },
+        "resources": {
+            "type": "object",
+            "default": {},
+            "title": "The resources Schema",
+            "required": [
+                "requests",
+                "limits"
+            ],
+            "properties": {
+                "requests": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The requests Schema",
+                    "required": [
+                        "cpu",
+                        "memory"
+                    ],
+                    "properties": {
+                        "cpu": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The cpu Schema",
+                            "examples": [
+                                "1000m"
+                            ]
+                        },
+                        "memory": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The memory Schema",
+                            "examples": [
+                                "2Gi"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "cpu": "1000m",
+                        "memory": "2Gi"
+                    }]
+                },
+                "limits": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The limits Schema",
+                    "required": [
+                        "cpu",
+                        "memory"
+                    ],
+                    "properties": {
+                        "cpu": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The cpu Schema",
+                            "examples": [
+                                "1000m"
+                            ]
+                        },
+                        "memory": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The memory Schema",
+                            "examples": [
+                                "2Gi"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "cpu": "1000m",
+                        "memory": "2Gi"
+                    }]
+                }
+            },
+            "examples": [{
+                "requests": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "limits": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                }
+            }]
+        },
+        "initResources": {
+            "type": "object",
+            "default": {},
+            "title": "The initResources Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "networkHost": {
+            "type": "string",
+            "default": "",
+            "title": "The networkHost Schema",
+            "examples": [
+                "0.0.0.0"
+            ]
+        },
+        "volumeClaimTemplate": {
+            "type": "object",
+            "default": {},
+            "title": "The volumeClaimTemplate Schema",
+            "required": [
+                "accessModes",
+                "resources"
+            ],
+            "properties": {
+                "accessModes": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The accessModes Schema",
+                    "items": {
+                        "type": "string",
+                        "default": "",
+                        "title": "A Schema",
+                        "examples": [
+                            "ReadWriteOnce"
+                        ]
+                    },
+                    "examples": [
+                        [
+                            "ReadWriteOnce"]
+                    ]
+                },
+                "resources": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The resources Schema",
+                    "required": [
+                        "requests"
+                    ],
+                    "properties": {
+                        "requests": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The requests Schema",
+                            "required": [
+                                "storage"
+                            ],
+                            "properties": {
+                                "storage": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The storage Schema",
+                                    "examples": [
+                                        "30Gi"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "storage": "30Gi"
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "requests": {
+                            "storage": "30Gi"
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "resources": {
+                    "requests": {
+                        "storage": "30Gi"
+                    }
+                }
+            }]
+        },
+        "rbac": {
+            "type": "object",
+            "default": {},
+            "title": "The rbac Schema",
+            "required": [
+                "create",
+                "serviceAccountAnnotations",
+                "serviceAccountName",
+                "automountToken"
+            ],
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The create Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "serviceAccountAnnotations": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The serviceAccountAnnotations Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                },
+                "serviceAccountName": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The serviceAccountName Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "automountToken": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The automountToken Schema",
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "create": false,
+                "serviceAccountAnnotations": {},
+                "serviceAccountName": "",
+                "automountToken": true
+            }]
+        },
+        "podSecurityPolicy": {
+            "type": "object",
+            "default": {},
+            "title": "The podSecurityPolicy Schema",
+            "required": [
+                "create",
+                "name",
+                "spec"
+            ],
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The create Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The name Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "spec": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The spec Schema",
+                    "required": [
+                        "privileged",
+                        "fsGroup",
+                        "runAsUser",
+                        "seLinux",
+                        "supplementalGroups",
+                        "volumes"
+                    ],
+                    "properties": {
+                        "privileged": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The privileged Schema",
+                            "examples": [
+                                true
+                            ]
+                        },
+                        "fsGroup": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The fsGroup Schema",
+                            "required": [
+                                "rule"
+                            ],
+                            "properties": {
+                                "rule": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The rule Schema",
+                                    "examples": [
+                                        "RunAsAny"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "rule": "RunAsAny"
+                            }]
+                        },
+                        "runAsUser": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The runAsUser Schema",
+                            "required": [
+                                "rule"
+                            ],
+                            "properties": {
+                                "rule": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The rule Schema",
+                                    "examples": [
+                                        "RunAsAny"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "rule": "RunAsAny"
+                            }]
+                        },
+                        "seLinux": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The seLinux Schema",
+                            "required": [
+                                "rule"
+                            ],
+                            "properties": {
+                                "rule": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The rule Schema",
+                                    "examples": [
+                                        "RunAsAny"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "rule": "RunAsAny"
+                            }]
+                        },
+                        "supplementalGroups": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The supplementalGroups Schema",
+                            "required": [
+                                "rule"
+                            ],
+                            "properties": {
+                                "rule": {
+                                    "type": "string",
+                                    "default": "",
+                                    "title": "The rule Schema",
+                                    "examples": [
+                                        "RunAsAny"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "rule": "RunAsAny"
+                            }]
+                        },
+                        "volumes": {
+                            "type": "array",
+                            "default": [],
+                            "title": "The volumes Schema",
+                            "items": {
+                                "type": "string",
+                                "title": "A Schema",
+                                "examples": [
+                                    "secret",
+                                    "configMap",
+                                    "persistentVolumeClaim",
+                                    "emptyDir"
+                                ]
+                            },
+                            "examples": [
+                                ["secret",
+                                    "configMap",
+                                    "persistentVolumeClaim",
+                                    "emptyDir"
+                                ]
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "privileged": true,
+                        "fsGroup": {
+                            "rule": "RunAsAny"
+                        },
+                        "runAsUser": {
+                            "rule": "RunAsAny"
+                        },
+                        "seLinux": {
+                            "rule": "RunAsAny"
+                        },
+                        "supplementalGroups": {
+                            "rule": "RunAsAny"
+                        },
+                        "volumes": [
+                            "secret",
+                            "configMap",
+                            "persistentVolumeClaim",
+                            "emptyDir"
+                        ]
+                    }]
+                }
+            },
+            "examples": [{
+                "create": false,
+                "name": "",
+                "spec": {
+                    "privileged": true,
+                    "fsGroup": {
+                        "rule": "RunAsAny"
+                    },
+                    "runAsUser": {
+                        "rule": "RunAsAny"
+                    },
+                    "seLinux": {
+                        "rule": "RunAsAny"
+                    },
+                    "supplementalGroups": {
+                        "rule": "RunAsAny"
+                    },
+                    "volumes": [
+                        "secret",
+                        "configMap",
+                        "persistentVolumeClaim",
+                        "emptyDir"
+                    ]
+                }
+            }]
+        },
+        "persistence": {
+            "type": "object",
+            "default": {},
+            "title": "The persistence Schema",
+            "required": [
+                "enabled",
+                "labels",
+                "annotations"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "labels": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The labels Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "annotations": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The annotations Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "labels": {
+                    "enabled": false
+                },
+                "annotations": {}
+            }]
+        },
+        "extraVolumes": {
+            "type": "array",
+            "default": [],
+            "title": "The extraVolumes Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "extraVolumeMounts": {
+            "type": "array",
+            "default": [],
+            "title": "The extraVolumeMounts Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "extraContainers": {
+            "type": "array",
+            "default": [],
+            "title": "The extraContainers Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "extraInitContainers": {
+            "type": "array",
+            "default": [],
+            "title": "The extraInitContainers Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "priorityClassName": {
+            "type": "string",
+            "default": "",
+            "title": "The priorityClassName Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "antiAffinityTopologyKey": {
+            "type": "string",
+            "default": "",
+            "title": "The antiAffinityTopologyKey Schema",
+            "examples": [
+                "kubernetes.io/hostname"
+            ]
+        },
+        "antiAffinity": {
+            "type": "string",
+            "default": "",
+            "title": "The antiAffinity Schema",
+            "examples": [
+                "hard"
+            ]
+        },
+        "nodeAffinity": {
+            "type": "object",
+            "default": {},
+            "title": "The nodeAffinity Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "podManagementPolicy": {
+            "type": "string",
+            "default": "",
+            "title": "The podManagementPolicy Schema",
+            "examples": [
+                "Parallel"
+            ]
+        },
+        "enableServiceLinks": {
+            "type": "boolean",
+            "default": false,
+            "title": "The enableServiceLinks Schema",
+            "examples": [
+                true
+            ]
+        },
+        "protocol": {
+            "type": "string",
+            "default": "",
+            "title": "The protocol Schema",
+            "examples": [
+                "http"
+            ]
+        },
+        "httpPort": {
+            "type": "integer",
+            "default": 0,
+            "title": "The httpPort Schema",
+            "examples": [
+                9200
+            ]
+        },
+        "transportPort": {
+            "type": "integer",
+            "default": 0,
+            "title": "The transportPort Schema",
+            "examples": [
+                9300
+            ]
+        },
+        "service": {
+            "type": "object",
+            "default": {},
+            "title": "The service Schema",
+            "required": [
+                "enabled",
+                "labels",
+                "labelsHeadless",
+                "type",
+                "nodePort",
+                "annotations",
+                "httpPortName",
+                "transportPortName",
+                "loadBalancerIP",
+                "loadBalancerSourceRanges",
+                "externalTrafficPolicy"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "labels": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The labels Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                },
+                "labelsHeadless": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The labelsHeadless Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                },
+                "type": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The type Schema",
+                    "examples": [
+                        "ClusterIP"
+                    ]
+                },
+                "nodePort": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The nodePort Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "annotations": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The annotations Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                },
+                "httpPortName": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The httpPortName Schema",
+                    "examples": [
+                        "http"
+                    ]
+                },
+                "transportPortName": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The transportPortName Schema",
+                    "examples": [
+                        "transport"
+                    ]
+                },
+                "loadBalancerIP": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The loadBalancerIP Schema",
+                    "examples": [
+                        ""
+                    ]
+                },
+                "loadBalancerSourceRanges": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The loadBalancerSourceRanges Schema",
+                    "items": {},
+                    "examples": [
+                        []
+                    ]
+                },
+                "externalTrafficPolicy": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The externalTrafficPolicy Schema",
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "labels": {},
+                "labelsHeadless": {},
+                "type": "ClusterIP",
+                "nodePort": "",
+                "annotations": {},
+                "httpPortName": "http",
+                "transportPortName": "transport",
+                "loadBalancerIP": "",
+                "loadBalancerSourceRanges": [],
+                "externalTrafficPolicy": ""
+            }]
+        },
+        "updateStrategy": {
+            "type": "string",
+            "default": "",
+            "title": "The updateStrategy Schema",
+            "examples": [
+                "RollingUpdate"
+            ]
+        },
+        "maxUnavailable": {
+            "type": "integer",
+            "default": 0,
+            "title": "The maxUnavailable Schema",
+            "examples": [
+                0
+            ]
+        },
+        "podSecurityContext": {
+            "type": "object",
+            "default": {},
+            "title": "The podSecurityContext Schema",
+            "required": [
+                "fsGroup",
+                "runAsUser"
+            ],
+            "properties": {
+                "fsGroup": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The fsGroup Schema",
+                    "examples": [
+                        1000
+                    ]
+                },
+                "runAsUser": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The runAsUser Schema",
+                    "examples": [
+                        1000
+                    ]
+                }
+            },
+            "examples": [{
+                "fsGroup": 1000,
+                "runAsUser": 1000
+            }]
+        },
+        "securityContext": {
+            "type": "object",
+            "default": {},
+            "title": "The securityContext Schema",
+            "required": [
+                "capabilities",
+                "runAsNonRoot",
+                "runAsUser"
+            ],
+            "properties": {
+                "capabilities": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The capabilities Schema",
+                    "required": [
+                        "drop"
+                    ],
+                    "properties": {
+                        "drop": {
+                            "type": "array",
+                            "default": [],
+                            "title": "The drop Schema",
+                            "items": {
+                                "type": "string",
+                                "default": "",
+                                "title": "A Schema",
+                                "examples": [
+                                    "ALL"
+                                ]
+                            },
+                            "examples": [
+                                [
+                                    "ALL"]
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "drop": [
+                            "ALL"
+                        ]
+                    }]
+                },
+                "runAsNonRoot": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The runAsNonRoot Schema",
+                    "examples": [
+                        true
+                    ]
+                },
+                "runAsUser": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The runAsUser Schema",
+                    "examples": [
+                        1000
+                    ]
+                }
+            },
+            "examples": [{
+                "capabilities": {
+                    "drop": [
+                        "ALL"
+                    ]
+                },
+                "runAsNonRoot": true,
+                "runAsUser": 1000
+            }]
+        },
+        "terminationGracePeriod": {
+            "type": "integer",
+            "default": 0,
+            "title": "The terminationGracePeriod Schema",
+            "examples": [
+                120
+            ]
+        },
+        "sysctlVmMaxMapCount": {
+            "type": "integer",
+            "default": 0,
+            "title": "The sysctlVmMaxMapCount Schema",
+            "examples": [
+                262144
+            ]
+        },
+        "readinessProbe": {
+            "type": "object",
+            "default": {},
+            "title": "The readinessProbe Schema",
+            "required": [
+                "failureThreshold",
+                "initialDelaySeconds",
+                "periodSeconds",
+                "successThreshold",
+                "timeoutSeconds"
+            ],
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The failureThreshold Schema",
+                    "examples": [
+                        3
+                    ]
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The initialDelaySeconds Schema",
+                    "examples": [
+                        10
+                    ]
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The periodSeconds Schema",
+                    "examples": [
+                        10
+                    ]
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The successThreshold Schema",
+                    "examples": [
+                        3
+                    ]
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The timeoutSeconds Schema",
+                    "examples": [
+                        5
+                    ]
+                }
+            },
+            "examples": [{
+                "failureThreshold": 3,
+                "initialDelaySeconds": 10,
+                "periodSeconds": 10,
+                "successThreshold": 3,
+                "timeoutSeconds": 5
+            }]
+        },
+        "clusterHealthCheckParams": {
+            "type": "string",
+            "default": "",
+            "title": "The clusterHealthCheckParams Schema",
+            "examples": [
+                "wait_for_status=green\u0026timeout=20s"
+            ]
+        },
+        "schedulerName": {
+            "type": "string",
+            "default": "",
+            "title": "The schedulerName Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "imagePullSecrets": {
+            "type": "array",
+            "default": [],
+            "title": "The imagePullSecrets Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "nodeSelector": {
+            "type": "object",
+            "default": {},
+            "title": "The nodeSelector Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "tolerations": {
+            "type": "array",
+            "default": [],
+            "title": "The tolerations Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "ingress": {
+            "type": "object",
+            "default": {},
+            "title": "The ingress Schema",
+            "required": [
+                "enabled",
+                "annotations",
+                "className",
+                "pathtype",
+                "hosts",
+                "tls"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        false
+                    ]
+                },
+                "annotations": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The annotations Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                },
+                "className": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The className Schema",
+                    "examples": [
+                        "nginx"
+                    ]
+                },
+                "pathtype": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The pathtype Schema",
+                    "examples": [
+                        "ImplementationSpecific"
+                    ]
+                },
+                "hosts": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The hosts Schema",
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "title": "A Schema",
+                        "required": [
+                            "host",
+                            "paths"
+                        ],
+                        "properties": {
+                            "host": {
+                                "type": "string",
+                                "default": "",
+                                "title": "The host Schema",
+                                "examples": [
+                                    "chart-example.local"
+                                ]
+                            },
+                            "paths": {
+                                "type": "array",
+                                "default": [],
+                                "title": "The paths Schema",
+                                "items": {
+                                    "type": "object",
+                                    "default": {},
+                                    "title": "A Schema",
+                                    "required": [
+                                        "path"
+                                    ],
+                                    "properties": {
+                                        "path": {
+                                            "type": "string",
+                                            "default": "",
+                                            "title": "The path Schema",
+                                            "examples": [
+                                                "/"
+                                            ]
+                                        }
+                                    },
+                                    "examples": [{
+                                        "path": "/"
+                                    }]
+                                },
+                                "examples": [
+                                    [{
+                                        "path": "/"
+                                    }]
+                                ]
+                            }
+                        },
+                        "examples": [{
+                            "host": "chart-example.local",
+                            "paths": [{
+                                "path": "/"
+                            }]
+                        }]
+                    },
+                    "examples": [
+                        [{
+                            "host": "chart-example.local",
+                            "paths": [{
+                                "path": "/"
+                            }]
+                        }]
+                    ]
+                },
+                "tls": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The tls Schema",
+                    "items": {},
+                    "examples": [
+                        []
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": false,
+                "annotations": {},
+                "className": "nginx",
+                "pathtype": "ImplementationSpecific",
+                "hosts": [{
+                    "host": "chart-example.local",
+                    "paths": [{
+                        "path": "/"
+                    }]
+                }],
+                "tls": []
+            }]
+        },
+        "nameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "The nameOverride Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "fullnameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "The fullnameOverride Schema",
+            "examples": [
+                "elasticsearch"
+            ]
+        },
+        "healthNameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "The healthNameOverride Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "lifecycle": {
+            "type": "object",
+            "default": {},
+            "title": "The lifecycle Schema",
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "sysctlInitContainer": {
+            "type": "object",
+            "default": {},
+            "title": "The sysctlInitContainer Schema",
+            "required": [
+                "enabled"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": true
+            }]
+        },
+        "keystore": {
+            "type": "array",
+            "default": [],
+            "title": "The keystore Schema",
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "networkPolicy": {
+            "type": "object",
+            "default": {},
+            "title": "The networkPolicy Schema",
+            "required": [
+                "http",
+                "transport"
+            ],
+            "properties": {
+                "http": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The http Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                },
+                "transport": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The transport Schema",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "The enabled Schema",
+                            "examples": [
+                                false
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "enabled": false
+                    }]
+                }
+            },
+            "examples": [{
+                "http": {
+                    "enabled": false
+                },
+                "transport": {
+                    "enabled": false
+                }
+            }]
+        },
+        "tests": {
+            "type": "object",
+            "default": {},
+            "title": "The tests Schema",
+            "required": [
+                "enabled"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": true
+            }]
+        },
+        "fsGroup": {
+            "type": "string",
+            "default": "",
+            "title": "The fsGroup Schema",
+            "examples": [
+                ""
+            ]
+        }
+    },
+    "examples": [{
+        "clusterName": "elasticsearch",
+        "nodeGroup": "master",
+        "masterService": "",
+        "roles": {
+            "master": "true",
+            "ingest": "true",
+            "data": "true",
+            "remote_cluster_client": "true",
+            "ml": "true"
+        },
+        "replicas": 3,
+        "minimumMasterNodes": 2,
+        "esMajorVersion": "",
+        "clusterDeprecationIndexing": "false",
+        "esConfig": {},
+        "esJvmOptions": {},
+        "extraEnvs": [],
+        "envFrom": [],
+        "secretMounts": [],
+        "hostAliases": [],
+        "image": "docker.elastic.co/elasticsearch/elasticsearch",
+        "imageTag": "7.16.3",
+        "imagePullPolicy": "Always",
+        "podAnnotations": {},
+        "labels": {},
+        "esJavaOpts": "-Xmx1024m -Xms1024m",
+        "resources": {
+            "requests": {
+                "cpu": "1000m",
+                "memory": "2Gi"
+            },
+            "limits": {
+                "cpu": "1000m",
+                "memory": "2Gi"
+            }
+        },
+        "initResources": {},
+        "networkHost": "0.0.0.0",
+        "volumeClaimTemplate": {
+            "accessModes": [
+                "ReadWriteOnce"
+            ],
+            "resources": {
+                "requests": {
+                    "storage": "30Gi"
+                }
+            }
+        },
+        "rbac": {
+            "create": false,
+            "serviceAccountAnnotations": {},
+            "serviceAccountName": "",
+            "automountToken": true
+        },
+        "podSecurityPolicy": {
+            "create": false,
+            "name": "",
+            "spec": {
+                "privileged": true,
+                "fsGroup": {
+                    "rule": "RunAsAny"
+                },
+                "runAsUser": {
+                    "rule": "RunAsAny"
+                },
+                "seLinux": {
+                    "rule": "RunAsAny"
+                },
+                "supplementalGroups": {
+                    "rule": "RunAsAny"
+                },
+                "volumes": [
+                    "secret",
+                    "configMap",
+                    "persistentVolumeClaim",
+                    "emptyDir"
+                ]
+            }
+        },
+        "persistence": {
+            "enabled": true,
+            "labels": {
+                "enabled": false
+            },
+            "annotations": {}
+        },
+        "extraVolumes": [],
+        "extraVolumeMounts": [],
+        "extraContainers": [],
+        "extraInitContainers": [],
+        "priorityClassName": "",
+        "antiAffinityTopologyKey": "kubernetes.io/hostname",
+        "antiAffinity": "hard",
+        "nodeAffinity": {},
+        "podManagementPolicy": "Parallel",
+        "enableServiceLinks": true,
+        "protocol": "http",
+        "httpPort": 9200,
+        "transportPort": 9300,
+        "service": {
+            "enabled": true,
+            "labels": {},
+            "labelsHeadless": {},
+            "type": "ClusterIP",
+            "nodePort": "",
+            "annotations": {},
+            "httpPortName": "http",
+            "transportPortName": "transport",
+            "loadBalancerIP": "",
+            "loadBalancerSourceRanges": [],
+            "externalTrafficPolicy": ""
+        },
+        "updateStrategy": "RollingUpdate",
+        "maxUnavailable": 0,
+        "podSecurityContext": {
+            "fsGroup": 1000,
+            "runAsUser": 1000
+        },
+        "securityContext": {
+            "capabilities": {
+                "drop": [
+                    "ALL"
+                ]
+            },
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+        },
+        "terminationGracePeriod": 120,
+        "sysctlVmMaxMapCount": 262144,
+        "readinessProbe": {
+            "failureThreshold": 3,
+            "initialDelaySeconds": 10,
+            "periodSeconds": 10,
+            "successThreshold": 3,
+            "timeoutSeconds": 5
+        },
+        "clusterHealthCheckParams": "wait_for_status=green\u0026timeout=20s",
+        "schedulerName": "",
+        "imagePullSecrets": [],
+        "nodeSelector": {},
+        "tolerations": [],
+        "ingress": {
+            "enabled": false,
+            "annotations": {},
+            "className": "nginx",
+            "pathtype": "ImplementationSpecific",
+            "hosts": [{
+                "host": "chart-example.local",
+                "paths": [{
+                    "path": "/"
+                }]
+            }],
+            "tls": []
+        },
+        "nameOverride": "",
+        "fullnameOverride": "elasticsearch",
+        "healthNameOverride": "",
+        "lifecycle": {},
+        "sysctlInitContainer": {
+            "enabled": true
+        },
+        "keystore": [],
+        "networkPolicy": {
+            "http": {
+                "enabled": false
+            },
+            "transport": {
+                "enabled": false
+            }
+        },
+        "tests": {
+            "enabled": true
+        },
+        "fsGroup": ""
+    }]
+}
